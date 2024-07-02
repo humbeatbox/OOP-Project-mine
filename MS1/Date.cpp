@@ -6,7 +6,7 @@
 // Revision History
 // -----------------------------------------------------------
 // Name               Date                 Reason
-// 
+// Hsiao-Kang Chang     07/02               init
 /////////////////////////////////////////////////////////////////
 #define _CRT_SECURE_NO_WARNINGS
 #include <iomanip>
@@ -80,7 +80,7 @@ namespace seneca {
    bool Date::bad()const {
       return m_ErrorCode != 0;
    }
-  
+
    ostream& operator<<(ostream& os, const Date& RO) {
       return RO.write(os);
    }

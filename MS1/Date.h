@@ -6,7 +6,7 @@
 // Revision History
 // -----------------------------------------------------------
 // Name               Date                 Reason
-// 
+// Hsiao-Kang Chang     07/02               init
 /////////////////////////////////////////////////////////////////
 #ifndef SENECA_DATE_H__
 #define SENECA_DATE_H__
@@ -49,7 +49,7 @@ namespace seneca {
       const char* dateStatus()const;  // returns a string corresponding the current status of the date
       int currentYear()const;         // returns the m_CUR_YEAR value;
 
-      
+
    };
    std::ostream& operator<<(std::ostream& os, const Date& RO);
    std::istream& operator>>(std::istream& is, Date& RO);
