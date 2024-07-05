@@ -43,9 +43,9 @@ namespace seneca{
         m_menuTitle = nullptr;
         noOfItems = 0;
     }
-    Menu::Menu(char* str){
-        m_menuTitle = new char[strlen(str)+1];
-        strcpy(m_menuTitle,str);
+    Menu::Menu(const string str){
+        m_menuTitle = new char[str.length() + 1];
+        strcpy(m_menuTitle,str.c_str());
         //no need just in case
         noOfItems = 0;
     }

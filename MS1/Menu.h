@@ -4,6 +4,7 @@
 //2024-07-04 Creat this file
 
 #include <iostream>
+#include <cstring>
 #define MAX_MENU_ITEMS 20
 namespace seneca{
 
@@ -28,7 +29,7 @@ namespace seneca{
         unsigned int noOfItems{};
     public:
         Menu();
-        Menu(char*);
+        Menu(const std::string);
         ~Menu();
 
         Menu(const Menu&) = delete;
