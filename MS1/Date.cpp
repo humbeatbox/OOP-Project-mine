@@ -81,7 +81,89 @@ namespace seneca {
       return m_ErrorCode != 0;
    }
 
-   ostream& operator<<(ostream& os, const Date& RO) {
+    std::istream &Date::read(istream &is) {
+/*       //Clears the error code by setting it NO_ERROR
+        m_ErrorCode = NO_ERROR;
+        //TODO check
+        char sep1, sep2;
+        char ch = ' ';
+        is >> m_year >> sep1 >> m_mon >> sep2 >> m_day;
+        if (is.fail() || isdigit(sep1) || isdigit(sep2)) {
+            m_ErrorCode = CIN_FAILED;
+            is.clear();
+        } else {
+            validate();
+        }
+        //Flushes the keyboard
+        while (ch != '\n') {
+            ch = is.get();
+        }
+        //TODO:google get it need to check out does it work
+        return is;*/
+        errCode(NO_ERROR);
+        char ch = ' ';
+        is >> m_year >> ch;
+        is.ignore();
+        is >> m_mon >> ch;
+        is.ignore();
+        is >> m_day;
+
+        if (is.fail()) {
+            errCode(CIN_FAILED);
+            is.clear();
+        } else {
+            validate();
+        }
+        //flushKey
+        while (ch != '\n') {
+//            ch = is.get();
+            is.get(ch);
+        }
+        return is;
+    }
+
+    std::ostream &Date::write(ostream &os) const {
+        if (bad()) {//check is true (if !=0) means having error
+            os << dateStatus();//print the “dateStatus()
+        } else {
+            os << m_year << '/' << setw(2) << setfill('0') << m_mon << '/' << setw(2) << setfill('0') << m_day;
+            os.fill(' ');//reset the fill
+        }
+        return os;
+    }
+
+    bool Date::operator==(Date& right) const {
+        return this->daysSince0001_1_1() == right.daysSince0001_1_1();
+    }
+
+    bool Date::operator!=(Date& right) const {
+        return this->daysSince0001_1_1() != right.daysSince0001_1_1();
+    }
+
+    bool Date::operator>=(Date& right) const {
+        return this->daysSince0001_1_1() >= right.daysSince0001_1_1();
+    }
+
+    bool Date::operator<=(Date& right) const {
+        return this->daysSince0001_1_1() <= right.daysSince0001_1_1();
+    }
+
+    bool Date::operator<(Date& right) const {
+        return this->daysSince0001_1_1() < right.daysSince0001_1_1();
+    }
+
+    bool Date::operator>(Date& right) const {
+        return this->daysSince0001_1_1() > right.daysSince0001_1_1();
+    }
+
+    int Date::operator-(const Date &right) {
+        return this->daysSince0001_1_1() - right.daysSince0001_1_1();
+    }
+
+    Date::operator bool() const {
+        return errCode() == NO_ERROR;
+    }
+    ostream& operator<<(ostream& os, const Date& RO) {
       return RO.write(os);
    }
    istream& operator>>(istream& is, Date& RO) {
