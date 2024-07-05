@@ -55,7 +55,7 @@ namespace seneca {
        bool operator <=(Date&)const;
        bool operator <(Date&)const;
        bool operator >(Date&)const;
-       int operator-(const Date&);
+       int operator-(const Date&)const;
        operator bool() const;
 
        std::istream& read(std::istream& is = std::cin);

@@ -77,6 +77,7 @@ namespace seneca{
 
     unsigned int Menu::run() const {
         unsigned int ret{};
+        display();
         ret = (unsigned int)ut.getInt(0,noOfItems);
         return ret;
     }
@@ -107,10 +108,7 @@ namespace seneca{
     }
 
     std::ostream& operator<<( std::ostream& ostr, const Menu& menu){
-        //print the title of the Menu using cout.
-        //cout << menu.m_menuTitle;
-        return ostr << menu.m_menuTitle ;
-        //TODO:fix the but it should be ok to cout the m_title
+        return (menu.m_menuTitle != nullptr && menu.m_menuTitle[0] != '\0')?ostr <<menu.m_menuTitle:ostr;
     }
 
 

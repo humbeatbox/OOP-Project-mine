@@ -1,3 +1,4 @@
+/*
 // Final Project
 // Date Tester program
 // File	dateTester.cpp
@@ -83,3 +84,4 @@ Date getDate() {
    } while (!D && cout << D.dateStatus() << ", Please try again > ");  // if D is invalid, print error message and loop
    return D;
 }
+*/

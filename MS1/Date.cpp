@@ -133,35 +133,35 @@ namespace seneca {
     }
 
     bool Date::operator==(Date& right) const {
-        return this->daysSince0001_1_1() == right.daysSince0001_1_1();
+        return (this->daysSince0001_1_1() == right.daysSince0001_1_1());
     }
 
     bool Date::operator!=(Date& right) const {
-        return this->daysSince0001_1_1() != right.daysSince0001_1_1();
+        return (this->daysSince0001_1_1() != right.daysSince0001_1_1());
     }
 
     bool Date::operator>=(Date& right) const {
-        return this->daysSince0001_1_1() >= right.daysSince0001_1_1();
+        return (this->daysSince0001_1_1() >= right.daysSince0001_1_1());
     }
 
     bool Date::operator<=(Date& right) const {
-        return this->daysSince0001_1_1() <= right.daysSince0001_1_1();
+        return (this->daysSince0001_1_1() <= right.daysSince0001_1_1());
     }
 
     bool Date::operator<(Date& right) const {
-        return this->daysSince0001_1_1() < right.daysSince0001_1_1();
+        return (this->daysSince0001_1_1() < right.daysSince0001_1_1());
     }
 
     bool Date::operator>(Date& right) const {
-        return this->daysSince0001_1_1() > right.daysSince0001_1_1();
+        return (this->daysSince0001_1_1() > right.daysSince0001_1_1());
     }
 
-    int Date::operator-(const Date &right) {
-        return this->daysSince0001_1_1() - right.daysSince0001_1_1();
+    int Date::operator-(const Date &right) const{
+        return (this->daysSince0001_1_1() - right.daysSince0001_1_1());
     }
 
     Date::operator bool() const {
-        return errCode() == NO_ERROR;
+        return errCode() == m_ErrorCode;
     }
     ostream& operator<<(ostream& os, const Date& RO) {
       return RO.write(os);
