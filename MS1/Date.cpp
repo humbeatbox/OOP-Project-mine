@@ -82,13 +82,13 @@ namespace seneca {
    }
 
     std::istream &Date::read(istream &is) {
-/*       //Clears the error code by setting it NO_ERROR
+       //Clears the error code by setting it NO_ERROR
         m_ErrorCode = NO_ERROR;
         //TODO check
         char sep1, sep2;
         char ch = ' ';
         is >> m_year >> sep1 >> m_mon >> sep2 >> m_day;
-        if (is.fail() || isdigit(sep1) || isdigit(sep2)) {
+        if (is.fail()){ //|| isdigit(sep1) || isdigit(sep2)) {
             m_ErrorCode = CIN_FAILED;
             is.clear();
         } else {
@@ -96,11 +96,11 @@ namespace seneca {
         }
         //Flushes the keyboard
         while (ch != '\n') {
-            ch = is.get();
+            is.get(ch);
         }
         //TODO:google get it need to check out does it work
-        return is;*/
-        errCode(NO_ERROR);
+        return is;
+        /*errCode(NO_ERROR);
         char ch = ' ';
         is >> m_year >> ch;
         is.ignore();
@@ -119,7 +119,7 @@ namespace seneca {
 //            ch = is.get();
             is.get(ch);
         }
-        return is;
+        return is;*/
     }
 
     std::ostream &Date::write(ostream &os) const {
