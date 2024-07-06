@@ -65,7 +65,7 @@ int main() {
    cout << col_red << "Testing Date module:" << col_end << endl;
    dateTester();
    cout << col_red << "testing Menu Module:" << col_end << endl;
-   //menuTester();
+   menuTester();
    return 0;
 }
 
@@ -125,24 +125,24 @@ void dateTester() {
       D1,   // daysSince0001_1_1 to be recieved from console
       D2(2024, 6, 10);
 
-//   cout << D1 - D2 << " days since ms1 was published" << endl;
-//   cout << "Current Date: " << D1 << endl;
-//   cout << "Enter " << col_pink << "abc: " << col_end;
-//   cin >> D1;
-//   cout << D1 << endl;
-//   cout << "Enter " << col_pink << "1000/1/1: " << col_end;
-//   cin >> D1;
-//   cout << D1 << endl;
-//   cout << "Enter " << col_pink << "2026/1/1: " << col_end;
-//   cin >> D1;
-//   cout << D1 << endl;
-//   cout <<  "Enter " << col_pink << "2000/13/1: " << col_end;
-//   cin >> D1;
-//   cout << D1 << endl;
-//   cout << "Enter " << col_pink << "2000/1/0: " << col_end;
-//   cin >> D1;
-//   cout << D1 << endl;
-//   hr();
+   cout << D1 - D2 << " days since ms1 was published" << endl;
+   cout << "Current Date: " << D1 << endl;
+   cout << "Enter " << col_pink << "abc: " << col_end;
+   cin >> D1;
+   cout << D1 << endl;
+   cout << "Enter " << col_pink << "1000/1/1: " << col_end;
+   cin >> D1;
+   cout << D1 << endl;
+   cout << "Enter " << col_pink << "2026/1/1: " << col_end;
+   cin >> D1;
+   cout << D1 << endl;
+   cout <<  "Enter " << col_pink << "2000/13/1: " << col_end;
+   cin >> D1;
+   cout << D1 << endl;
+   cout << "Enter " << col_pink << "2000/1/0: " << col_end;
+   cin >> D1;
+   cout << D1 << endl;
+   hr();
    D1 = Date(2024, 6, 10);
    D2 = Date(2024, 6, 10);
    dateOperatorTester(D2, D1);

@@ -49,18 +49,21 @@ namespace seneca {
       const char* dateStatus()const;  // returns a string corresponding the current status of the date
       int currentYear()const;         // returns the m_CUR_YEAR value;
 
-       bool operator ==(Date&)const;
-       bool operator !=(Date&)const;
-       bool operator >=(Date&)const;
-       bool operator <=(Date&)const;
-       bool operator <(Date&)const;
-       bool operator >(Date&)const;
+//       bool operator ==(Date&)const;
+       friend bool operator ==(const Date&,const Date&);
+       friend bool operator !=(const Date&,const Date&);
+       friend bool operator >=(const Date&,const Date&);
+       friend bool operator <=(const Date&,const Date&);
+       friend bool operator <(const Date&,const Date&);
+       friend bool operator >(const Date&,const Date&);
+
        int operator-(const Date&)const;
        operator bool() const;
 
        std::istream& read(std::istream& is = std::cin);
        std::ostream& write(std::ostream& os = std::cout)const;
    };
+
    std::ostream& operator<<(std::ostream& os, const Date& RO);
    std::istream& operator>>(std::istream& is, Date& RO);
 }

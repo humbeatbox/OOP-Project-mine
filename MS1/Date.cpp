@@ -132,28 +132,28 @@ namespace seneca {
         return os;
     }
 
-    bool Date::operator==(Date& right) const {
-        return (this->daysSince0001_1_1() == right.daysSince0001_1_1());
+    bool operator==(const Date& left,const Date& right) {
+        return (left.daysSince0001_1_1() == right.daysSince0001_1_1());
     }
 
-    bool Date::operator!=(Date& right) const {
-        return (this->daysSince0001_1_1() != right.daysSince0001_1_1());
+    bool operator!=(const Date& left,const Date& right) {
+        return (left.daysSince0001_1_1() != right.daysSince0001_1_1());
     }
 
-    bool Date::operator>=(Date& right) const {
-        return (this->daysSince0001_1_1() >= right.daysSince0001_1_1());
+    bool operator>=(const Date& left,const Date& right){
+        return (left.daysSince0001_1_1() >= right.daysSince0001_1_1());
     }
 
-    bool Date::operator<=(Date& right) const {
-        return (this->daysSince0001_1_1() <= right.daysSince0001_1_1());
+    bool operator<=(const Date& left,const Date& right) {
+        return (left.daysSince0001_1_1() <= right.daysSince0001_1_1());
     }
 
-    bool Date::operator<(Date& right) const {
-        return (this->daysSince0001_1_1() < right.daysSince0001_1_1());
+    bool operator<(const Date& left,const Date& right){
+        return (left.daysSince0001_1_1() < right.daysSince0001_1_1());
     }
 
-    bool Date::operator>(Date& right) const {
-        return (this->daysSince0001_1_1() > right.daysSince0001_1_1());
+    bool operator>(const Date& left,const Date& right){
+        return (left.daysSince0001_1_1() > right.daysSince0001_1_1());
     }
 
     int Date::operator-(const Date &right) const{
