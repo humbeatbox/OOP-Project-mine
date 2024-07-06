@@ -7,6 +7,7 @@
 // -----------------------------------------------------------
 // Name               Date                 Reason
 // Hsiao-Kang Chang     07/02               init
+// Hsiao-Kang Chang     07/05               done
 /////////////////////////////////////////////////////////////////
 #define _CRT_SECURE_NO_WARNINGS
 #include <iomanip>
@@ -88,7 +89,7 @@ namespace seneca {
         char sep1, sep2;
         char ch = ' ';
         is >> m_year >> sep1 >> m_mon >> sep2 >> m_day;
-        if (is.fail()){ //|| isdigit(sep1) || isdigit(sep2)) {
+        if (is.fail()){
             m_ErrorCode = CIN_FAILED;
             is.clear();
         } else {
@@ -98,28 +99,7 @@ namespace seneca {
         while (ch != '\n') {
             is.get(ch);
         }
-        //TODO:google get it need to check out does it work
         return is;
-        /*errCode(NO_ERROR);
-        char ch = ' ';
-        is >> m_year >> ch;
-        is.ignore();
-        is >> m_mon >> ch;
-        is.ignore();
-        is >> m_day;
-
-        if (is.fail()) {
-            errCode(CIN_FAILED);
-            is.clear();
-        } else {
-            validate();
-        }
-        //flushKey
-        while (ch != '\n') {
-//            ch = is.get();
-            is.get(ch);
-        }
-        return is;*/
     }
 
     std::ostream &Date::write(ostream &os) const {

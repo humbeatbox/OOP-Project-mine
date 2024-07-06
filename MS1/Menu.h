@@ -2,7 +2,7 @@
 //Seneca email:hchang67@myseneca.ca
 //Seneca Student ID:120049234
 //2024-07-04 Creat this file
-
+//2024-07-05 done
 #include <iostream>
 #include <cstring>
 #define MAX_MENU_ITEMS 20

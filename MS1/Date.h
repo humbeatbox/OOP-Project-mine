@@ -7,6 +7,7 @@
 // -----------------------------------------------------------
 // Name               Date                 Reason
 // Hsiao-Kang Chang     07/02               init
+// Hsiao-Kang Chang     07/05               done
 /////////////////////////////////////////////////////////////////
 #ifndef SENECA_DATE_H__
 #define SENECA_DATE_H__
@@ -49,7 +50,6 @@ namespace seneca {
       const char* dateStatus()const;  // returns a string corresponding the current status of the date
       int currentYear()const;         // returns the m_CUR_YEAR value;
 
-//       bool operator ==(Date&)const;
        friend bool operator ==(const Date&,const Date&);
        friend bool operator !=(const Date&,const Date&);
        friend bool operator >=(const Date&,const Date&);

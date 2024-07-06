@@ -2,7 +2,7 @@
 //Seneca email:hchang67@myseneca.ca
 //Seneca Student ID:120049234
 //2024-07-04 Creat this file
-
+//2024-07-05 done
 #include "Menu.h"
 #include "Utils.h"
 using namespace seneca;
@@ -85,6 +85,10 @@ namespace seneca{
     unsigned int Menu::operator~() const {
         return run();
     }
+    /*get the menuItemContent
+     * if the menuItemContent less max_items and not negative
+     * set it's name as menuItemContent
+    */
     Menu& Menu::operator<<(const char* menuItemContent){
         if (noOfItems < MAX_MENU_ITEMS && noOfItems >= 0) {
             m_menuItem[noOfItems] = new MenuItem(menuItemContent);
@@ -102,7 +106,8 @@ namespace seneca{
     Menu::operator bool() const {
         return noOfItems > 0;
     }
-
+    //Overload the indexing operator to return the const char* cast of the corresponding MenuItem in the array of MenuItem pointers.
+    //If the index passes the number of MenuItems in the Menu, loop back to the beginning.
     const char *Menu::operator[](unsigned int index) const {
         return (const char*) *m_menuItem[index % MAX_MENU_ITEMS];
     }
