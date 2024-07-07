@@ -62,7 +62,8 @@ namespace seneca{
 
     void Menu::display()const{
         if(m_menuTitle != nullptr && m_menuTitle[0] != '\0'){
-            cout << m_menuTitle << ":" << endl;
+//            cout << m_menuTitle << ":" << endl;
+            cout << m_menuTitle << endl;
         }
         for (size_t i = 0; i <noOfItems ; ++i) {
             cout.width(2);
