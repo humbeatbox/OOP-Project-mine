@@ -9,7 +9,7 @@ namespace seneca {
 
     bool LibApp::confirm(const char *message) {
         Menu menu(message);
-        menu << "yes";
+        menu << "Yes";
         return (menu.run() == 1);
     }
 

@@ -4,7 +4,7 @@
 namespace seneca {
     class LibApp {
         bool m_changed{};
-        Menu m_mainMenu={"Seneca Libray Application"};
+        Menu m_mainMenu={"Seneca Library Application"};
         Menu m_exitMenu={"Changes have been made to the data, what would you like to do?"};
         bool confirm(const char* message);
 
