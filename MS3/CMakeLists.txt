@@ -14,4 +14,9 @@ add_executable(MS3
         Menu.h
         ms3_tester.cpp
         Utils.cpp
-        Utils.h)
+        Utils.h
+        Lib.h
+        Publication.cpp
+        Publication.h
+        Streamable.cpp
+        Streamable.h)

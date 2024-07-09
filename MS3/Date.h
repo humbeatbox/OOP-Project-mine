@@ -13,6 +13,14 @@
 #define SENECA_DATE_H__
 #include <iostream>
 namespace seneca {
+
+    //for testing purposes
+    extern bool seneca_test;
+    extern int seneca_year;
+    extern int seneca_mon;
+    extern int seneca_day;
+    //for testing purposes
+
    const int NO_ERROR = 0;
    const int CIN_FAILED = 1;
    const int YEAR_ERROR = 2;
