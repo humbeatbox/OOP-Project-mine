@@ -13,8 +13,8 @@
 #include <iomanip>
 #include <iostream>
 #include <ctime>
-using namespace std;
 #include "Date.h"
+using namespace std;
 namespace seneca {
     //for testing purposes
     bool seneca_test = false;
