@@ -158,7 +158,7 @@ namespace seneca {
     }
 
     Date::operator bool() const {
-        return errCode() != 0;
+        return errCode() == 0;
     }
     ostream& operator<<(ostream& os, const Date& RO) {
       return RO.write(os);

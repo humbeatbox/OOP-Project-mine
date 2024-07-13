@@ -113,8 +113,8 @@ namespace seneca{
     }
 
     std::ostream& Publication::write(std::ostream& os) const{
-            if (!(*this) || !m_date)
-            return os;
+        if (!(*this) || !m_date)
+        return os;
         if (conIO(os)) {
 //            os << "| " << setw(SENECA_SHELF_ID_LEN)
 //               << m_shelfId
