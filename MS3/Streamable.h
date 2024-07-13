@@ -19,10 +19,10 @@ namespace seneca{
         virtual std::istream& read(std::istream&) = 0;
         virtual bool conIO(std::ios& io)const = 0;
         virtual operator bool()const = 0;
-        virtual ~Streamable() = 0;
-
-        Streamable& operator<<(const Streamable&);
-        Streamable& operator>>(Streamable&);
+        virtual ~Streamable() = default;
+        virtual std::ostream &operator<<(std::ostream &os) = 0;
+        virtual std::istream &operator>>(std::istream &is) = 0;
     };
 }
 #endif //MS3_STREAMABLE_H
+

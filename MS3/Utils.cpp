@@ -32,4 +32,15 @@ namespace seneca {
         cin.ignore( 12000, '\n' );
         return val;
     }
+
+    void Utils::getCstr( char* str, size_t len ) {
+        cin.getline( str, len + 1 );
+        while ( cin.fail( ) ) {
+//            cout << "Maximum " << len << " chars!, retry\n> ";
+            cin.clear( );
+            cin.ignore( 12000, '\n' );
+            cin.getline( str, len + 1 );
+        }
+    }
+
 }

@@ -101,10 +101,10 @@ namespace seneca {
 
     std::istream &Date::read(istream &is) {
        //Clears the error code by setting it NO_ERROR
-        m_ErrorCode = NO_ERROR;
+        //m_ErrorCode = NO_ERROR;
+        errCode(NO_ERROR);
         //TODO check
         char sep1, sep2;
-        char ch = ' ';
         is >> m_year >> sep1 >> m_mon >> sep2 >> m_day;
         if (is.fail()){
             errCode(CIN_FAILED);
@@ -158,7 +158,7 @@ namespace seneca {
     }
 
     Date::operator bool() const {
-        return errCode() == m_ErrorCode;
+        return errCode() != 0;
     }
     ostream& operator<<(ostream& os, const Date& RO) {
       return RO.write(os);

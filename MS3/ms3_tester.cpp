@@ -114,6 +114,6 @@ int main() {
          cout.unsetf(ios::right);
          cout << pd << (pd == "Star" ? "<<<":"") << endl;
       }
-   }
-   return 0;
+}
+return 0;
 }
