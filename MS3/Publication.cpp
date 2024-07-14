@@ -154,9 +154,9 @@ namespace seneca{
         m_libRef = -1;
         m_date = Date();
 
-
+        char titleTmp[256]{};
         //char *titleTmp = nullptr;
-        string titleTmp = {};
+        //string titleTmp = {};
         char shelfTmp[SENECA_SHELF_ID_LEN + 1]{};
         int membershipTmp = 0;
         int libRefTmp = -1;
@@ -172,40 +172,40 @@ namespace seneca{
             }
             cout << "Title: ";
             if(!istr.fail()){
-                //istr.getline(titleTmp,1000,'\n');
-                getline(cin,titleTmp);
+                istr.getline(titleTmp,1000,'\n');
+                //getline(cin,titleTmp);
             }
 
             //istr.ignore( 12000, '\n' );
             cout << "Date: ";
             if(!istr.fail()){
-                dateTmp.read();//read date
+                istr >> dateTmp;
                 if(!dateTmp){
                     istr.setstate(std::ios::failbit);
                 }
             }
-
-
         }else{
             istr >> libRefTmp;
-            istr.ignore();//only skip tab
-            istr.getline(shelfTmp,SENECA_SHELF_ID_LEN + 1 ,'\t');
-//            istr.getline(titleTmp,1000,'\t');
-            getline(cin,titleTmp);
+            istr.ignore();
+            istr.getline(shelfTmp, SENECA_SHELF_ID_LEN + 1, '\t');
+            istr.getline(titleTmp, 256, '\t');
+            //getline(cin,titleTmp,'\t');
             istr >> membershipTmp;
             istr.ignore();
-            dateTmp.read();
-            if(!dateTmp){
+
+            istr >> dateTmp;
+            if (!dateTmp)
                 istr.setstate(std::ios::failbit);
-            }
         }
         //After the process of reading is done if istr is in a valid state:
         if (!istr.fail()){
             if(titleTmp[0] != '\0'){
                 delete m_title;
                 m_title = nullptr;
-                m_title = new char[strlen(titleTmp.c_str()) + 1 ];
-                strcpy(m_title,titleTmp.c_str());
+                //m_title = new char[strlen(titleTmp.c_str()) + 1 ];
+                m_title = new char[strlen(titleTmp) + 1 ];
+//                strcpy(m_title,titleTmp.c_str());
+                strcpy(m_title,titleTmp);
             }
             if(shelfTmp[0] != '\0'){
                 strcpy(m_shelfId,shelfTmp);
