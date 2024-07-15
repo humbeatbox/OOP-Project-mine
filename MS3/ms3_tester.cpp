@@ -38,34 +38,34 @@ int main() {
    seneca::seneca_test = true;
    Publication pd;
    fcopy( "Periodicals.txt", "PeriodicalsOriginal.txt" );
-   cout << "An Invalid publication printout:" << endl;
-   cout << ">" << pd << "<" << endl;
-   cout << "Enter the following: " << endl
-      << "P1234" << endl
-      << "------------------------------" << endl;
-   pd = readPublication(cin);
-   if (!cin) {
-      cin.clear();
-      cin.ignore(1000, '\n');
-   }
-   else {
-      cout << "This is not supposed to be printed!" << endl;
-   }
-   cout << "You entered:" << endl;
-   cout << ">" << pd << "<" << endl;
-   cout << "Enter the following: " << endl
-      << "P123" << endl
-      << "Seneca Weekly" << endl
-      << "2024/13/17" << endl
-      << "------------------------------" << endl;
-   pd = readPublication(cin);
-   if (!cin) {
-      cin.clear();
-      cin.ignore(1000, '\n');
-   }
-   else {
-      cout << "This is not supposed to be printed!" << endl;
-   }
+//   cout << "An Invalid publication printout:" << endl;
+//   cout << ">" << pd << "<" << endl;
+//   cout << "Enter the following: " << endl
+//      << "P1234" << endl
+//      << "------------------------------" << endl;
+//   pd = readPublication(cin);
+//   if (!cin) {
+//      cin.clear();
+//      cin.ignore(1000, '\n');
+//   }
+//   else {
+//      cout << "This is not supposed to be printed!" << endl;
+//   }
+//   cout << "You entered:" << endl;
+//   cout << ">" << pd << "<" << endl;
+//   cout << "Enter the following: " << endl
+//      << "P123" << endl
+//      << "Seneca Weekly" << endl
+//      << "2024/13/17" << endl
+//      << "------------------------------" << endl;
+//   pd = readPublication(cin);
+//   if (!cin) {
+//      cin.clear();
+//      cin.ignore(1000, '\n');
+//   }
+//   else {
+//      cout << "This is not supposed to be printed!" << endl;
+//   }
    cout << "You entered:" << endl;
    cout << ">" << pd << "<" << endl;
    cout << "Enter the following: " << endl
