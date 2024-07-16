@@ -40,35 +40,35 @@ int main() {
    Book pd;
    fcopy( "Books.txt", "BooksOriginal.txt" );
    cout << "An Invalid Book printout:" << endl;
-   cout << ">" << pd << "<" << endl;
-   cout << endl << "Enter the following: " << endl
-      << "P1234" << endl
-      << "------------------------------" << endl;
-   pd = readBook(cin);
-   if (!cin) {
-      cin.clear();
-      cin.ignore(1000, '\n');
-   }
-   else {
-      cout << "This is not supposed to be printed!" << endl;
-   }
-   cout << "You entered:" << endl;
-   cout << ">" << pd << "<" << endl;
-   cout << endl << "Enter the following: " << endl
-      << "P123" << endl
-      << "Seneca Handbook" << endl
-      << "2024/13/17" << endl
-      << "------------------------------" << endl;
-   pd = readBook(cin);
-   if (!cin) {
-      cin.clear();
-      cin.ignore(1000, '\n');
-   }
-   else {
-      cout << "This is not supposed to be printed!" << endl;
-   }
-   cout << "You entered:" << endl;
-   cout << ">" << pd << "<" << endl;
+//   cout << ">" << pd << "<" << endl;
+//   cout << endl << "Enter the following: " << endl
+//      << "P1234" << endl
+//      << "------------------------------" << endl;
+//   pd = readBook(cin);
+//   if (!cin) {
+//      cin.clear();
+//      cin.ignore(1000, '\n');
+//   }
+//   else {
+//      cout << "This is not supposed to be printed!" << endl;
+//   }
+//   cout << "You entered:" << endl;
+//   cout << ">" << pd << "<" << endl;
+//   cout << endl << "Enter the following: " << endl
+//      << "P123" << endl
+//      << "Seneca Handbook" << endl
+//      << "2024/13/17" << endl
+//      << "------------------------------" << endl;
+//   pd = readBook(cin);
+//   if (!cin) {
+//      cin.clear();
+//      cin.ignore(1000, '\n');
+//   }
+//   else {
+//      cout << "This is not supposed to be printed!" << endl;
+//   }
+//   cout << "You entered:" << endl;
+//   cout << ">" << pd << "<" << endl;
    cout << endl << "Enter the following: " << endl
       << "P123" << endl
       << "The Story of My Experiments with Truth" << endl

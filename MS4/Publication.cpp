@@ -96,9 +96,18 @@ namespace seneca{
         if (conIO(os)) {
             os << "| " << setw(SENECA_SHELF_ID_LEN)
                << m_shelfId
-               << " | " << setw(SENECA_TITLE_WIDTH) <<setfill('.') << left
-               << m_title
-               << " | " << right;
+               << " | "  ;
+
+            if(strlen(m_title) > SENECA_TITLE_WIDTH){
+                os.write(m_title,SENECA_TITLE_WIDTH);
+            } else {
+                os << setw(SENECA_TITLE_WIDTH) << setfill('.');
+                os << m_title;
+            }
+            os << setfill(' ');
+
+            os << " | " ;
+
             onLoan() ? os << m_membership : os << " N/A ";
             os << " | "
                << m_date
@@ -135,7 +144,7 @@ namespace seneca{
             }
             cout << "Title: ";
             if(!istr.fail()){
-                istr.getline(titleTmp,1000,'\n');
+                istr.getline(titleTmp,256,'\n');
             }
             cout << "Date: ";
             if(!istr.fail()){

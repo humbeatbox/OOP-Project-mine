@@ -6,8 +6,6 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(.)
 
 add_executable(MS4
-        "Date copy.cpp"
-        "Date copy.h"
         Lib.h
         LibApp.cpp
         LibApp.h
@@ -21,4 +19,6 @@ add_executable(MS4
         Utils.cpp
         Utils.h
         Book.cpp
-        Book.h)
+        Book.h
+        Date.cpp
+        Date.cpp)

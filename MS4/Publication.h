@@ -20,7 +20,7 @@
 #include "Streamable.h"
 
 
-//using namespace seneca;
+using namespace seneca;
 namespace seneca{
     class Publication : public Streamable {
         char* m_title{};
