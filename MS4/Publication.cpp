@@ -101,10 +101,10 @@ namespace seneca{
             if(strlen(m_title) > SENECA_TITLE_WIDTH){
                 os.write(m_title,SENECA_TITLE_WIDTH);
             } else {
-                os << setw(SENECA_TITLE_WIDTH) << setfill('.');
+                os << setw(SENECA_TITLE_WIDTH) << left << setfill('.');
                 os << m_title;
             }
-            os << setfill(' ');
+            os <<right << setfill(' ');
 
             os << " | " ;
 

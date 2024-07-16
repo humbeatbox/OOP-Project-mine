@@ -58,7 +58,7 @@ namespace seneca{
                     os << m_authorName;
                 }
             }
-            os << setfill(' ') << " |";
+            os << right << setfill(' ') << " |";
         }else{
             os << '\t' << m_authorName;
         }
