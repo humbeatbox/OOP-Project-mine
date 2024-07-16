@@ -1,10 +1,12 @@
-//Name:Hsiao-Kang Chang 
-//Seneca email:hchang67@myseneca.ca
-//Seneca Student ID:120049234
-//2024-07-14 Creat this file
-//Done on
-
-//
+// File	Book.h
+// Version 1.0
+// Author	Hsiao-Kang Chang
+// Revision History
+// -----------------------------------------------------------
+// Name               Date                 Reason
+// Hsiao-Kang Chang     07/14              init
+// Hsiao-Kang Chang     07/16              done
+/////////////////////////////////////////////////////////////////
 
 #ifndef MS4_BOOK_H
 #define MS4_BOOK_H

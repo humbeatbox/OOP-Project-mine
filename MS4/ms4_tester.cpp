@@ -69,16 +69,16 @@ int main() {
 //   }
 //   cout << "You entered:" << endl;
 //   cout << ">" << pd << "<" << endl;
-   cout << endl << "Enter the following: " << endl
-      << "P123" << endl
-      << "The Story of My Experiments with Truth" << endl
-      << "2024/11/17" << endl
-      << "Mohandas Karamchand Gandhi" << endl
-      << "------------------------------" << endl;
-   pd = readBook(cin);
-   cout << "You entered:" << endl;
-   cout << pd << endl;
-   cout << "And the title is agian: \"" << (const char*)pd << "\"" << endl;
+//   cout << endl << "Enter the following: " << endl
+//      << "P123" << endl
+//      << "The Story of My Experiments with Truth" << endl
+//      << "2024/11/17" << endl
+//      << "Mohandas Karamchand Gandhi" << endl
+//      << "------------------------------" << endl;
+//   pd = readBook(cin);
+//   cout << "You entered:" << endl;
+//   cout << pd << endl;
+//   cout << "And the title is agian: \"" << (const char*)pd << "\"" << endl;
    pd.set(12345);
    if (pd.onLoan()) {
       cout << "Now this publication is on loan to a member with the id: 12345" << endl;
