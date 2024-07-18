@@ -1,6 +1,7 @@
 #include <iostream>
+#include <fstream>
 #include "LibApp.h"
-
+#include "Book.h"
 using namespace std;
 using namespace seneca;
 
@@ -15,11 +16,36 @@ namespace seneca {
 
     void LibApp::load() {
         cout << "Loading Data" << endl;
+        //MS51
+        ifstream inFile(m_filename);
+        char pub_type{};
+        while (inFile){
+            inFile >> pub_type;
+            inFile.ignore();
+            if(inFile){
+                if (pub_type == 'P') {
+                    m_ppa[m_nolp] = new Publication;
+                }else if (pub_type == 'B') {
+                    m_ppa[m_nolp] = new Book;
+                }
+                //TODO:check this part
+                inFile >> *m_ppa[m_nolp];
+                m_llrn = m_ppa[m_nolp]->getRef();
+                m_nolp++;
+            }
+            }
+        }
+        //MS51
     }
 
     void LibApp::save() {
         cout << "Saving Data" << endl;
-
+        ofstream inFile(m_filename);
+        for (int i = 0; i < m_nolp; ++i) {
+            if (m_ppa[i]->getRef() != 0) {
+                inFile << *m_ppa[i] << std::endl;
+            }
+        }
     }
 
     void LibApp::search() {
@@ -75,6 +101,9 @@ namespace seneca {
         m_exitMenu //<< "Changes have been made to the data, what would you like to do?"
                    << "Save changes and exit"
                    << "Cancel and go back to the main menu";
+        //MS51
+        m_pub_type << "\"Book\" and \"Publication\"";
+        //MS51
         load();
     }
 
