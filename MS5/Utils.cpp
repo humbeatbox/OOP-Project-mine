@@ -43,4 +43,20 @@ namespace seneca {
         }
     }
 
+    char Utils::getType(unsigned int num) {
+        char ch = 'X';
+        switch(num){
+            case 1:
+                ch = 'B';
+                break;
+            case 2:
+                ch = 'P';
+                break;
+            default:
+                ch = 'X';
+                break;
+        }
+        return ch;
+    }
+
 }

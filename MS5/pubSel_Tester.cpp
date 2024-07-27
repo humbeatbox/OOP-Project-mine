@@ -28,7 +28,7 @@ void prnPub(Publication* p[], int size, int ref) {
       }
    }
 }
-int main() {
+/*int main() {
    ifstream infile("LibRecs.txt");
    Publication* p[1000]{};
    PublicationSelector ps("Publications with Harry and MoneySencse", 5);
@@ -68,4 +68,4 @@ int main() {
       delete p[i];
    }
    return 0;
-}
+}*/

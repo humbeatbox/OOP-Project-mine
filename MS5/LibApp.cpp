@@ -2,11 +2,12 @@
 #include <fstream>
 #include "LibApp.h"
 #include "Book.h"
+#include "Utils.h"
 using namespace std;
 using namespace seneca;
 
 namespace seneca {
-
+//    Utils ut;
 
     bool LibApp::confirm(const char *message) {
         Menu menu(message);
@@ -33,7 +34,7 @@ namespace seneca {
                 m_llrn = m_ppa[m_nolp]->getRef();
                 m_nolp++;
             }
-            }
+
         }
         //MS51
     }
@@ -50,6 +51,25 @@ namespace seneca {
 
     void LibApp::search() {
         cout << "Searching for publication" << endl;
+        //TODO:search part need implement
+        //TODO:
+        /*Add needed arguments so the search function can be called in three different modes:
+
+        Search all
+        Search Checkout Items Search only those publications which are on loan by library members
+        Search Available Items Search only those publications which are not on loan
+        Search will use an instance of PublicationSelector class to collect the search matches and user selection. The prompt of the PublicSelector should be: "Select one of the following found matches:" The page size for the selector menu should be 15 (the default value)
+
+        First, get the type of publication to search for from the user. (user the type selection Menu of the class)
+
+        Then print "Publication Title: " and get the title to search the PPA for. (up to 256 characters)
+
+        Go through all the publications in the PPA and based on the method of search (all the items, on loan items or available ones) check each element and if the publication (pointed by the PPA element) is not deleted and type matches the selection of the user and the title contains the title the user entered, insert it into the PublicationSelector object.
+
+                If matches are found, sort the result, get the user's selection and return the library reference number. If not print "No matches found!"
+
+        If the user aborts at any stage print "Aborted!"*/
+        //PublicationSelector();
     }
     /*  Calls the search() method.
     prints "Returning publication"<NEWLINE>
@@ -65,11 +85,66 @@ namespace seneca {
 
 
     void LibApp::newPublication() {
-        cout << "Adding new publication to library" << endl;
-        if(confirm("Add this publication to library?")){
-            m_changed = true;
-            cout << "Publication added" <<endl;
-        };
+//        cout << "Adding new publication to the library" << endl;
+//        if(confirm("Add this publication to library?")){
+//            m_changed = true;
+//            cout << "Publication added" <<endl;
+//        };
+        //MS5
+        if(m_nolp == SENECA_LIBRARY_CAPACITY){
+            cout << "Library is at its maximum capacity!";
+            return;
+        }
+
+        cout << "Adding new publication to the library";
+//        char type = ut.getType();
+        unsigned int pubType = m_pub_type.run();
+        char typeChar = ut.getType(pubType);
+
+        Publication* pub = nullptr;
+
+        if (typeChar == 'B') {
+            pub = new Book();
+            pub->read(cin);
+        } else if (typeChar == 'P') {
+            pub = new Publication();
+            pub->read(cin);
+        }else if (typeChar == 'X') {
+            cout << "Aborted!" << endl;
+            //cin.ignore(12000,'\n');
+            return;
+        }
+
+        if(cin.fail()){//get incorrect type
+            cout << "Aborted!" << endl;
+            cin.ignore(12000,'\n');
+            delete[] pub;
+            return;
+        }
+        {//cin good get correct type
+            if(confirm("Add this publication to the library?")){//check add or not
+                if (pub != nullptr){//pub is valid
+                    m_llrn++;
+                    pub->setRef(m_llrn);
+                    m_ppa[m_nolp++] = pub;
+                    m_changed = true;
+                    cout << "Publication added" << endl;
+                }else {
+                    cout << "Failed to add publication!" << endl;
+                    delete[] pub;
+                }
+            }else{//don't want to add
+                cout << "Aborted!" << endl;
+                delete[] pub;
+                return;
+            }
+        }
+//        cout << "Failed to add publication!" << endl;
+        //TODO: check logic
+
+
+
+        //MS5
     }
 
     void LibApp::removePublication() {
@@ -102,7 +177,7 @@ namespace seneca {
                    << "Save changes and exit"
                    << "Cancel and go back to the main menu";
         //MS51
-        m_pub_type << "\"Book\" and \"Publication\"";
+        m_pub_type << "Book" << "Publication";
         //MS51
         load();
     }
@@ -150,10 +225,25 @@ namespace seneca {
                     }
                     cout << endl;
                     break;
+
             }
 
         }
         cout << "-------------------------------------------\n"
                 "Thanks for using Seneca Library Application" << endl;
     }
+
+    LibApp::LibApp(const char *&filename) :LibApp(){
+        strcpy(m_filename,filename);
+    }
+
+    Publication* LibApp::getPub(int libRef) {
+        for (int i = 0; i < m_nolp; ++i) {
+            if (m_ppa[i]->getRef() == libRef) {
+                return m_ppa[i];
+            }
+        }
+        return nullptr;
+    }
+
 }
