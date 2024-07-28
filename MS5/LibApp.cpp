@@ -114,7 +114,7 @@ namespace seneca {
             return;
         }
 
-        cout << "Adding new publication to the library";
+        cout << "Adding new publication to the library" << endl;
 //        char type = ut.getType();
         unsigned int pubType = m_pub_type.run();
         char typeChar = ut.getType(pubType);
