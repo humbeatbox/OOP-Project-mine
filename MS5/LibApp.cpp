@@ -68,10 +68,10 @@ namespace seneca {
                 If matches are found, sort the result, get the user's selection and return the library reference number. If not print "No matches found!"
 
         If the user aborts at any stage print "Aborted!"*/
-        char insertTilte[257]{};
-        PublicationSelector selector("Select one of the following found matches:");
-        unsigned int pubType = m_pub_type.run();
-        char typeChar = ut.getType(pubType);
+//        char insertTilte[257]{};
+//        PublicationSelector selector("Select one of the following found matches:");
+//        unsigned int pubType = m_pub_type.run();
+//        char typeChar = ut.getType(pubType);
 //        if (typeChar == 'X') {
 //            cout << "Aborted!" << endl;
 ////            return -2;
@@ -110,7 +110,7 @@ namespace seneca {
 //        };
         //MS5
         if(m_nolp == SENECA_LIBRARY_CAPACITY){
-            cout << "Library is at its maximum capacity!";
+            cout << "Library is at its maximum capacity!" << endl;
             return;
         }
 
@@ -252,9 +252,24 @@ namespace seneca {
                 "Thanks for using Seneca Library Application" << endl;
     }
 
-    LibApp::LibApp(const char *&filename) :LibApp(){
+//    LibApp::LibApp(const char *&filename) :LibApp(){
+    LibApp::LibApp(const char *&filename) {
+        //MS51
+        m_changed = {};
+        m_mainMenu  //<< "Seneca Libray Application"
+                << "Add New Publication"
+                << "Remove Publication"
+                << "Checkout publication from library"
+                << "Return publication to library";
+
+        m_exitMenu //<< "Changes have been made to the data, what would you like to do?"
+                << "Save changes and exit"
+                << "Cancel and go back to the main menu";
+
+        m_pub_type << "Book" << "Publication";
         strcpy(m_filename,filename);
         load();
+        //MS51
     }
 
     Publication* LibApp::getPub(int libRef) {
@@ -264,6 +279,12 @@ namespace seneca {
             }
         }
         return nullptr;
+    }
+
+    LibApp::~LibApp() {
+        for (int i = 0; i < m_nolp; ++i) {
+            delete m_ppa[i];
+        }
     }
 
 }
