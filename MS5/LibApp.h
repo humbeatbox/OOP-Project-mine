@@ -2,6 +2,9 @@
 #define SENECA_LIBAPP_H
 #include "Menu.h"
 #include "Publication.h"
+#include "PublicationSelector.h"
+#include "Book.h"
+#include "Utils.h"
 namespace seneca {
     class LibApp {
         bool m_changed{};
@@ -18,9 +21,9 @@ namespace seneca {
 
         bool confirm(const char* message);
 
-        void load();  // prints: "Loading Data"<NEWLINE>
-        void save();  // prints: "Saving Data"<NEWLINE>
-        void search();  // prints: "Searching for publication"<NEWLINE>
+        void load();
+        void save();
+        int search();
         void returnPub();
 
         void newPublication();

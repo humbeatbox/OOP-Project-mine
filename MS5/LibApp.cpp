@@ -1,8 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include "LibApp.h"
-#include "Book.h"
-#include "Utils.h"
+
+
 using namespace std;
 using namespace seneca;
 
@@ -34,7 +34,6 @@ namespace seneca {
                 m_llrn = m_ppa[m_nolp]->getRef();
                 m_nolp++;
             }
-
         }
         //MS51
     }
@@ -49,7 +48,7 @@ namespace seneca {
         }
     }
 
-    void LibApp::search() {
+    int LibApp::search() {
         cout << "Searching for publication" << endl;
         //TODO:search part need implement
         //TODO:
@@ -69,7 +68,26 @@ namespace seneca {
                 If matches are found, sort the result, get the user's selection and return the library reference number. If not print "No matches found!"
 
         If the user aborts at any stage print "Aborted!"*/
-        //PublicationSelector();
+        char insertTilte[257]{};
+        PublicationSelector selector("Select one of the following found matches:");
+        unsigned int pubType = m_pub_type.run();
+        char typeChar = ut.getType(pubType);
+//        if (typeChar == 'X') {
+//            cout << "Aborted!" << endl;
+////            return -2;
+//            //TODO:check idea
+//        }else{
+//            cout << "Publication Title: " << endl;
+//            cin.getline(insertTilte,256);
+//            insertTilte[256] = '\0';
+//
+//            for (int i = 0; i < m_nolp; i++) {
+//                if(){}
+//            }
+//
+//        }
+
+        return 0;
     }
     /*  Calls the search() method.
     prints "Returning publication"<NEWLINE>
@@ -157,6 +175,7 @@ namespace seneca {
     }
 
     void LibApp::checkOutPub() {
+        cout << "Checkout publication from the library" << endl;
         search();
         if(confirm("Check out publication?")){
             m_changed = true;
@@ -235,6 +254,7 @@ namespace seneca {
 
     LibApp::LibApp(const char *&filename) :LibApp(){
         strcpy(m_filename,filename);
+        load();
     }
 
     Publication* LibApp::getPub(int libRef) {
