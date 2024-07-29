@@ -52,11 +52,10 @@ namespace seneca {
             case 2:
                 ch = 'P';
                 break;
-            default:
+            default://not B or P
                 ch = 'X';
                 break;
         }
         return ch;
     }
-
 }

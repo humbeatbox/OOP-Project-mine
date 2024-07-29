@@ -50,8 +50,6 @@ namespace seneca{
         const char* operator[](unsigned index) const;
         friend std::ostream& operator<<( std::ostream&, const Menu&);
     };
-
-
 }
 
 #endif //SENECA_MENU_H

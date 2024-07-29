@@ -23,7 +23,7 @@ namespace seneca {
 
         void load();
         void save();
-        int search();
+        int search(int);
         void returnPub();
 
         void newPublication();
@@ -31,7 +31,8 @@ namespace seneca {
         void checkOutPub();
     public:
         LibApp();
-        LibApp(const char*&);
+        explicit LibApp(const char*&);
+//      LibApp(const char*&);
         ~LibApp();
         void run();
     };
