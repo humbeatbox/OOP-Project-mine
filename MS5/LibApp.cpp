@@ -47,89 +47,56 @@ namespace seneca {
             }
         }
     }
-
+    // search the Publication by argument
+    // search aborted return -2
+    // search fail return -1
     int LibApp::search(int searchOption) {
         char searchTitle[257]{};
-        int reference = 0;
-        char getTypeFromFile{};
-        ifstream inFile(m_filename);
-        //cout << "Searching for publication" << endl;
+        int reference{};
         PublicationSelector pubSelect("Select one of the following found matches:");
         unsigned int pubType = m_pub_type.run();
         char typeChar = ut.getType(pubType);
+
         if (typeChar == 'X') {
             cout << "Aborted!" << endl;
-//            return -2;
             reference = -1;//search fail
-            //TODO:check idea
         }else {
-            cout << "Publication Title: " << endl;
-            cin.getline(searchTitle, 256);
-            searchTitle[256] = '\0';
-//            for (int i = 0;  inFile; ++i) {
-            int i = 0;
-                while(inFile){
+            cout << "Publication Title: ";
+            cin.getline(searchTitle, 257);
 
-                if (typeChar == 'P')
-                    m_ppa[i] = new Publication;
-                else if (typeChar == 'B')
-                    m_ppa[i] = new Book;
-
-//                inFile >> getTypeFromFile;//TODO:second time become J ?????????why????????!!!!!!!
-//                inFile.ignore();
-                //get type from file
-
+            for (int i = 0; i < m_nolp; ++i) {
                 if (m_ppa[i]) {
-                    inFile >> *m_ppa[i];
-                    switch(searchOption){
+                    switch (searchOption) {
                         case SEARCH_ALL:
-//                            if (m_ppa[i]->type() == getTypeFromFile && *m_ppa[i] == searchTitle )
-                            if (m_ppa[i] != nullptr && m_ppa[i]->type() == typeChar && *m_ppa[i] == searchTitle )
-                                pubSelect << m_ppa[i++];
+                            if (m_ppa[i]->type() == typeChar && *m_ppa[i] == searchTitle)
+                                pubSelect << m_ppa[i];
                             break;
                         case SEARCH_CHECKOUT:
-                            if (*m_ppa[i] == searchTitle && m_ppa[i]->onLoan())
-                                pubSelect << m_ppa[i++];
+                            if (m_ppa[i]->type() == typeChar && *m_ppa[i] == searchTitle && m_ppa[i]->onLoan())
+                                pubSelect << m_ppa[i];
                             break;
                         case SEARCH_AVAILABLE:
-                            if (*m_ppa[i] == searchTitle && !m_ppa[i]->onLoan())
-                                pubSelect << m_ppa[i++];
+                            if (m_ppa[i]->type() == typeChar && *m_ppa[i] == searchTitle && !m_ppa[i]->onLoan())
+                                pubSelect << m_ppa[i];
                             break;
                         default:
                             break;
                     }
 
                 }
-/*                inFile >> getTypeFromFile;
-                inFile.ignore();
-                if (inFile) {
-                    if (getTypeFromFile == 'P')
-                        m_ppa[i] = new Publication;
-                    else if (getTypeFromFile == 'B')
-                        m_ppa[i] = new Book;
-                    if (m_ppa[i]) {
-                        inFile >> *m_ppa[i];
-                        // find publications with Harry or MoneySence in the title
-                        if (*m_ppa[i] == searchTitle)
-                            pubSelect << m_ppa[i]; // insert into PublicationSelector if there is match
-                    }
-                }*/
             }
-
             if(pubSelect){
                 pubSelect.sort();
                 reference  = pubSelect.run();
-                if (reference>0) {
-                    return reference;
+                pubSelect.reset();
+                if (reference == 0) {
+                    cout << "Aborted!" << endl;
+                    return -2;//search aborted
                 }
-                else {
-                    cout << "Aborted by user!" << endl;
-                }
+            } else{
+                cout << "No matches found!" << endl;
             }
         }
-
-//        }
-
         return reference;
     }
     /*  Calls the search() method.
@@ -138,7 +105,7 @@ namespace seneca {
     sets m_changed to true;
     */
     void LibApp::returnPub() {
-        search(SEARCH_CHECKOUT);
+        //int libReference = search(SEARCH_CHECKOUT);
         cout << "Returning publication" << endl;
         cout << "Publication returned" << endl;
         m_changed = true;
@@ -206,13 +173,13 @@ namespace seneca {
             m_changed = true;
             cout << "Publication removed" <<endl;
         }
-        delete removePub;
-        removePub = nullptr;
+//        delete removePub;
+//        removePub = nullptr;
     }
 
     void LibApp::checkOutPub() {
         cout << "Checkout publication from the library" << endl;
-        search(SEARCH_AVAILABLE);
+        //int libReference = search(SEARCH_AVAILABLE);
         if(confirm("Check out publication?")){
             m_changed = true;
             cout << "Publication checked out" <<endl;
