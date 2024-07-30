@@ -32,9 +32,7 @@ namespace seneca {
                 if(m_ppa[m_nolp]!= nullptr){
                     inFile >> *m_ppa[m_nolp];
                     m_llrn = m_ppa[m_nolp++]->getRef();
-//                    m_nolp++;
                 }
-
             }
         }
     }
@@ -100,11 +98,7 @@ namespace seneca {
         }
         return reference;
     }
-    /*  Calls the search() method.
-    prints "Returning publication"<NEWLINE>
-    prints "Publication returned"<NEWLINE>
-    sets m_changed to true;
-    */
+
     void LibApp::returnPub() {
         Date today;
         cout << "Return publication to the library" << endl;
@@ -147,11 +141,9 @@ namespace seneca {
             cout << "Aborted!" << endl;
             return;
         }
-
         if(cin.fail()){//get incorrect type
             cout << "Aborted!" << endl;
             cin.ignore(12000,'\n');
-//            delete pub;
             return;
         }
         {//cin good get correct type
@@ -170,7 +162,6 @@ namespace seneca {
                 return;
             }
         }
-        delete pub;
         //MS5
     }
 
