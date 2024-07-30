@@ -105,10 +105,22 @@ namespace seneca {
     sets m_changed to true;
     */
     void LibApp::returnPub() {
-        //int libReference = search(SEARCH_CHECKOUT);
-        cout << "Returning publication" << endl;
-        cout << "Publication returned" << endl;
-        m_changed = true;
+        Date today;
+        cout << "Return publication to the library" << endl;
+        int libReference = search(SEARCH_CHECKOUT);
+        Publication* pubSelect = getPub(libReference);
+        if(libReference){
+            cout << "Return Publication?" << endl;
+            cout << *pubSelect << endl;
+            int calDay = today - pubSelect->checkoutDate();
+            if(calDay > 15){
+                cout << "Please pay $" << cout.setf(ios::fixed) << cout.precision(2);
+                cout << 0.5 * (calDay - 15) << " penalty for being " << (calDay - 15) << " days late!" << endl;
+            }
+            pubSelect->setRef(0);
+            m_changed = true;
+            cout << "Publication returned" << endl;
+        }
     }
 
 
@@ -179,10 +191,16 @@ namespace seneca {
 
     void LibApp::checkOutPub() {
         cout << "Checkout publication from the library" << endl;
-        //int libReference = search(SEARCH_AVAILABLE);
-        if(confirm("Check out publication?")){
+        int libReference = search(SEARCH_AVAILABLE);
+        Publication* pubSelect = getPub(libReference);
+        if(pubSelect){
+            cout << *pubSelect << endl;
+            if(confirm("Check out publication?")){
+                cout << "Enter Membership number: ";
+                pubSelect->set(ut.getMemberNum());
+            }
             m_changed = true;
-            cout << "Publication checked out" <<endl;
+            cout << "Publication checked out" << endl;
         }
     }
 

@@ -33,6 +33,19 @@ namespace seneca {
         return val;
     }
 
+    int Utils::getMemberNum() {
+        int val{};
+        cin >> val;
+        while ( cin.fail() || val < 10000 || val >99999) {
+            cout << "Invalid membership number, try again: ";
+            cin.clear( );
+            cin.ignore( 12000, '\n' );
+            cin >> val;
+        }
+        cin.ignore( 12000, '\n' );
+        return val;
+    }
+
     void Utils::getCstr( char* str, size_t len ) {
         cin.getline( str, len + 1 );
         while ( cin.fail( ) ) {

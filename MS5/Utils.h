@@ -19,6 +19,7 @@ namespace seneca {
     class Utils {
     public:
         size_t getInt(size_t,size_t);
+        int getMemberNum();
         void getCstr( char* str, size_t len );
         char getType(unsigned int);
     };
