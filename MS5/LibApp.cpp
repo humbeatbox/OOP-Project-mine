@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 #include "LibApp.h"
 #define SEARCH_ALL 1
 #define SEARCH_CHECKOUT 2
@@ -43,7 +44,7 @@ namespace seneca {
         ofstream inFile(m_filename);
         for (int i = 0; i < m_nolp; ++i) {
             if (m_ppa[i]->getRef() != 0) {
-                inFile << *m_ppa[i] << std::endl;
+                inFile << *m_ppa[i] << endl;
             }
         }
     }
@@ -110,16 +111,19 @@ namespace seneca {
         int libReference = search(SEARCH_CHECKOUT);
         Publication* pubSelect = getPub(libReference);
         if(libReference){
-            cout << "Return Publication?" << endl;
             cout << *pubSelect << endl;
-            int calDay = today - pubSelect->checkoutDate();
-            if(calDay > 15){
-                cout << "Please pay $" << cout.setf(ios::fixed) << cout.precision(2);
-                cout << 0.5 * (calDay - 15) << " penalty for being " << (calDay - 15) << " days late!" << endl;
+
+            if(confirm("Return Publication?")){
+                int exceedDay = today - pubSelect->checkoutDate();
+                if(exceedDay > 15){
+                    cout << "Please pay $" << fixed << setprecision(2);
+                    cout << (0.5 * (exceedDay -15));
+                    cout << " penalty for being " << (exceedDay -15) << " days late!" << endl;
+                }
+                pubSelect->set(0);
+                m_changed = true;
+                cout << "Publication returned" << endl;
             }
-            pubSelect->setRef(0);
-            m_changed = true;
-            cout << "Publication returned" << endl;
         }
     }
 

@@ -62,7 +62,7 @@ namespace seneca{
     }
 
     void Publication::set(int member_id) {
-        if (member_id < 99999 && member_id >9999){
+        if ((member_id < 99999 && member_id >9999) || member_id == 0){
             m_membership = member_id;
         }
     }

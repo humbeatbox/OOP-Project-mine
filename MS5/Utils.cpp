@@ -46,16 +46,6 @@ namespace seneca {
         return val;
     }
 
-    void Utils::getCstr( char* str, size_t len ) {
-        cin.getline( str, len + 1 );
-        while ( cin.fail( ) ) {
-//            cout << "Maximum " << len << " chars!, retry\n> ";
-            cin.clear( );
-            cin.ignore( 12000, '\n' );
-            cin.getline( str, len + 1 );
-        }
-    }
-
     char Utils::getType(unsigned int num) {
         char ch = 'X';
         switch(num){
