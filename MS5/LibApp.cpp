@@ -110,9 +110,8 @@ namespace seneca {
         cout << "Return publication to the library" << endl;
         int libReference = search(SEARCH_CHECKOUT);
         Publication* pubSelect = getPub(libReference);
-        if(libReference){
+        if(pubSelect){
             cout << *pubSelect << endl;
-
             if(confirm("Return Publication?")){
                 int exceedDay = today - pubSelect->checkoutDate();
                 if(exceedDay > 15){
@@ -152,7 +151,7 @@ namespace seneca {
         if(cin.fail()){//get incorrect type
             cout << "Aborted!" << endl;
             cin.ignore(12000,'\n');
-            delete[] pub;
+//            delete pub;
             return;
         }
         {//cin good get correct type
@@ -165,14 +164,13 @@ namespace seneca {
                     cout << "Publication added" << endl;
                 }else {
                     cout << "Failed to add publication!" << endl;
-                    delete[] pub;
                 }
             }else{//don't want to add
                 cout << "Aborted!" << endl;
-                delete[] pub;
                 return;
             }
         }
+        delete pub;
         //MS5
     }
 
@@ -181,16 +179,16 @@ namespace seneca {
         //MS2
         int libReference =  search(SEARCH_ALL);
         Publication* removePub = getPub(libReference);
-        cout << *removePub << endl;
-
-        if(confirm("Remove this publication from the library?")){
-            removePub->setRef(0);
-            //MS2
-            m_changed = true;
-            cout << "Publication removed" <<endl;
+        if(removePub){
+            cout << *removePub << endl;
+            if(confirm("Remove this publication from the library?")){
+                removePub->setRef(0);
+                //MS2
+                m_changed = true;
+                cout << "Publication removed" <<endl;
+            }
         }
-//        delete removePub;
-//        removePub = nullptr;
+
     }
 
     void LibApp::checkOutPub() {
