@@ -28,10 +28,12 @@ namespace seneca {
                 }else if (pub_type == 'B') {
                     m_ppa[m_nolp] = new Book;
                 }
+                if(m_ppa[m_nolp]!= nullptr){
+                    inFile >> *m_ppa[m_nolp];
+                    m_llrn = m_ppa[m_nolp++]->getRef();
+//                    m_nolp++;
+                }
 
-                inFile >> *m_ppa[m_nolp];
-                m_llrn = m_ppa[m_nolp]->getRef();
-                m_nolp++;
             }
         }
     }
@@ -51,7 +53,7 @@ namespace seneca {
         int reference = 0;
         char getTypeFromFile{};
         ifstream inFile(m_filename);
-        cout << "Searching for publication" << endl;
+        //cout << "Searching for publication" << endl;
         PublicationSelector pubSelect("Select one of the following found matches:");
         unsigned int pubType = m_pub_type.run();
         char typeChar = ut.getType(pubType);
@@ -73,15 +75,16 @@ namespace seneca {
                 else if (typeChar == 'B')
                     m_ppa[i] = new Book;
 
-                inFile >> getTypeFromFile;
-                inFile.ignore();
+//                inFile >> getTypeFromFile;//TODO:second time become J ?????????why????????!!!!!!!
+//                inFile.ignore();
                 //get type from file
 
                 if (m_ppa[i]) {
                     inFile >> *m_ppa[i];
                     switch(searchOption){
                         case SEARCH_ALL:
-                            if (m_ppa[i]->type() == getTypeFromFile && *m_ppa[i] == searchTitle )
+//                            if (m_ppa[i]->type() == getTypeFromFile && *m_ppa[i] == searchTitle )
+                            if (m_ppa[i] != nullptr && m_ppa[i]->type() == typeChar && *m_ppa[i] == searchTitle )
                                 pubSelect << m_ppa[i++];
                             break;
                         case SEARCH_CHECKOUT:
@@ -127,7 +130,7 @@ namespace seneca {
 
 //        }
 
-        return 0;
+        return reference;
     }
     /*  Calls the search() method.
     prints "Returning publication"<NEWLINE>
@@ -191,12 +194,20 @@ namespace seneca {
     }
 
     void LibApp::removePublication() {
-        cout << "Removing publication from library" << endl;
-        search(SEARCH_ALL);
+        cout << "Removing publication from the library" << endl;
+        //MS2
+        int libReference =  search(SEARCH_ALL);
+        Publication* removePub = getPub(libReference);
+        cout << *removePub << endl;
+
         if(confirm("Remove this publication from the library?")){
+            removePub->setRef(0);
+            //MS2
             m_changed = true;
             cout << "Publication removed" <<endl;
         }
+        delete removePub;
+        removePub = nullptr;
     }
 
     void LibApp::checkOutPub() {
