@@ -10,14 +10,14 @@ namespace seneca {
         bool m_changed{};
         Menu m_mainMenu={"Seneca Library Application"};
         Menu m_exitMenu={"Changes have been made to the data, what would you like to do?"};
-        //MS5
+        //SenecaLibraryApplication
         char m_filename[256]{};
         Publication* m_ppa[SENECA_LIBRARY_CAPACITY]{};//all the records of the publication data file
         int m_nolp{};//Number Of Loaded Publications
         int m_llrn{};//Last Library Reference Number
         Menu m_pub_type={"Choose the type of publication:"};
         Publication* getPub(int libRef);
-        //MS5
+        //SenecaLibraryApplication
 
         bool confirm(const char* message);
 

@@ -1,11 +1,9 @@
-cmake_minimum_required(VERSION 3.27)
-project(MS5)
+cmake_minimum_required(VERSION 3.28)
+project(SenecaLibraryApplication)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 11)
 
-include_directories(.)
-
-add_executable(MS5
+add_executable(SenecaLibraryApplication
         Book.cpp
         Book.h
         Date.cpp
@@ -20,7 +18,6 @@ add_executable(MS5
         Publication.h
         PublicationSelector.cpp
         PublicationSelector.h
-        pubSel_Tester.cpp
         Streamable.cpp
         Streamable.h
         Utils.cpp

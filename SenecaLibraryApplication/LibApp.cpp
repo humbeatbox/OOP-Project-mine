@@ -122,7 +122,7 @@ namespace seneca {
 
 
     void LibApp::newPublication() {
-        //MS5
+        //SenecaLibraryApplication
         if(m_nolp == SENECA_LIBRARY_CAPACITY){
             cout << "Library is at its maximum capacity!" << endl;
             return;
@@ -162,7 +162,7 @@ namespace seneca {
                 return;
             }
         }
-        //MS5
+        //SenecaLibraryApplication
     }
 
     void LibApp::removePublication() {
